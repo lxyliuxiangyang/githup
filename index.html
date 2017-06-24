@@ -6,6 +6,40 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background: #000000;
+        }
+
+        span{
+            width: 36px;
+            height: 36px;
+            background: url("imges/star.png") no-repeat;
+            position: absolute;
+            left: 0;
+            top: 0;
+            -webkit-background-size: 100% 100%;
+            animation:flash 1s alternate infinite;
+        }
+        @keyframes flash  {
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        span:hover{
+            /*span前面一定要加：*/
+            transform:scale(3,3) rotate(180deg) !important;
+            transition: all 1s;
+        }
+    </style>
 </head>
 <body>
 <form action="">
@@ -14,5 +48,22 @@
         <li><input type="password"></li>
         <li><input type="submit"></li>
     </ul></form>
+<script>
+    var screenw=document.documentElement.clientWidth;
+    var screeny=document.documentElement.clientHeight;
+    //创建元素
+    for(var i=0;i<150;i++){
+        var span=document.createElement('span');
+        document.body.appendChild(span);
+        var x=Math.random()*screenw;
+        var y=Math.random()*screeny;
+        span.style.left=x+'px'
+        span.style.top=y+'px'
+        var rotate=Math.random()*2;
+        span.style.animationDelay=''+rotate+'s'
+        var scale=Math.random()*2
+        span.style.transform='scale('+scale+','+scale+')'
+    }
+</script>
 </body>
 </html>
